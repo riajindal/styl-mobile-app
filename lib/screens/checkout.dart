@@ -182,7 +182,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'home_screen');
+                  },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 50.0),
                     backgroundColor: Color(0xFF5956E9),

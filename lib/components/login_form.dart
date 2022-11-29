@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  final bool createAccount;
+
+  const LoginForm({super.key, this.createAccount = false});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Login',
+              createAccount ? 'Sign Up' : 'Login',
               style:
                   TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.w600),
             ),
@@ -104,19 +106,26 @@ class LoginForm extends StatelessWidget {
                         backgroundColor: Color(0xFF5956E9),
                       ),
                       child: Text(
-                        "Login",
+                        createAccount ? 'Sign Up' : 'Login',
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
                     SizedBox(
                       height: 15.0,
                     ),
-                    Text(
-                      "Create Account",
-                      style: TextStyle(
-                          color: Color(0xFF5956E9),
-                          fontWeight: FontWeight.w600),
-                    ),
+                    TextButton(
+                      onPressed: () {
+                        createAccount
+                            ? Navigator.pushNamed(context, 'login_screen')
+                            : Navigator.pushNamed(context, 'sign_up_screen');
+                      },
+                      child: Text(
+                        createAccount ? 'Login' : 'Create Account',
+                        style: TextStyle(
+                            color: Color(0xFF5956E9),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
                   ],
                 ),
               ),
